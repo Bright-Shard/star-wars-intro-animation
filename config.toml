@@ -1,0 +1,59 @@
+# This first part of the config controls the text that appears in the animation.
+# The standard Star Wars intro is broken up into 3 parts like this:
+# 1. "A long time ago in a galaxy far, far away..."
+# 2. "STAR WARS"
+# 3. Bunch of text to set up the movie's plot
+#
+# I call the first part the intro, the second the title, and the third the
+# scrolling text.
+
+# The location in the intro text, eg:
+# "A long time ago in a <intro_place> far, far away..."
+intro_place = "galaxy"
+title = "STAR\nWARS"
+scrolling_text = """
+It is a period of civil wars in the galaxy. A brave alliance of underground
+freedom fighters has challenged the tyranny and oppression of the awesome
+GALACTIC EMPIRE.
+
+Striking from a fortress hidden among the billion stars of the galaxy, rebel
+spaceships have won their first victory in a battle with the powerful Imperial
+Starfleet. The EMPIRE fears that another defeat could bring a thousand more
+solar systems into the rebellion, and Imperial control over the galaxy would be
+lost forever.
+
+To crush the rebellion once and for all, the EMPIRE is constructing a sinister
+new battle station. Powerful enough to destroy an entire planet, its completion
+spells certain doom for the champions of freedom.
+"""
+
+# This next section changes the speeds of all of the animations.
+
+# How fast the fade in and fade out animations of the intro text are.
+intro_fade_in_speed = 0.02
+intro_fade_out_speed = 0.01
+# How long the intro text stays on screen before fading out, in seconds.
+intro_fade_out_delay = 3
+# How long the screen stays blank after the intro text, before showing the
+# title, in seconds.
+title_delay = 1.5
+# The number of lines to show every second in the scrolling animation.
+lps = 0.8
+
+# Everything below here is performance settings that you shouldn't need to
+# change.
+
+# How often to update the scrolling text animation - essentially the max FPS of
+# the scrolling text animation. You probably don't need to change this.
+scrolling_text_hz = 60
+# Size of each chunk in the scrolling text. You probably don't need to change
+# this.
+#
+# The scrolling text is broken up into chunks for precision reasons. If you try
+# to animate scrolling several hundred thousand lines of text (don't ask why I
+# needed to do this), the position of the text eventually loses precision
+# because the browser stores that position as a float. Over time, the position
+# of the text becomes unstable because of these precision errors. Thus, the
+# text starts out stable, then starts vibrating, and then eventually shakes
+# itself off the screen.
+chunk_size = 1_000
