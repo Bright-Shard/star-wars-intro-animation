@@ -27,14 +27,17 @@
 		}
 
 		.text {
-			text-wrap: wrap;
 			position: absolute;
 			bottom: 0px;
 			margin: 0px;
+			text-wrap: nowrap;
 			width: fit-content;
+			max-width: 80%;
+
 			color: var(--yellow);
 			font-size: 30px;
 			font-weight: 700;
+
 			transform-origin: 50% 100%;
 			transform: perspective(300px) rotateX(15deg);
 		}
@@ -105,6 +108,7 @@
 			temp.className = "text";
 			body.appendChild(temp);
 			temp.innerHTML = "A";
+			const RAW_PX_PER_LINE = temp.clientHeight;
 			const PX_PER_LINE = temp.clientHeight * SPEED;
 			temp.remove();
 
@@ -155,12 +159,12 @@
 
 				for (let i = 0; i < CHUNK_SIZE * (1 / SPEED); i++) {
 					text.style.top = `calc(100% - ${i * PX_PER_LINE}px)`;
-					oldText.style.top = `calc(100% - ${PX_PER_LINE * CHUNK_SIZE + i * PX_PER_LINE}px)`;
+					oldText.style.top = `calc(100% - ${RAW_PX_PER_LINE * CHUNK_SIZE + i * PX_PER_LINE}px)`;
 					await sleep(1 / SCROLLING_TEXT_HZ);
 				}
 
 				oldText.innerHTML = text.innerHTML;
-				oldText.style.top = `calc(100% - ${PX_PER_LINE * CHUNK_SIZE}px)`;
+				oldText.style.top = `calc(100% - ${RAW_PX_PER_LINE * CHUNK_SIZE}px)`;
 			}
 		});
 	</script>

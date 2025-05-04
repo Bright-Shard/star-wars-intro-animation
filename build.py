@@ -6,7 +6,7 @@ with open("site.html", "r") as template:
 
 		javascript = f"""
 		<script>
-			const SCROLLING_TEXT = String.raw`{config["scrolling_text"]}`;
+			const SCROLLING_TEXT = String.raw`{config["scrolling_text"].replace('`', '\\`')}`;
 			const INTRO_PLACE = String.raw`{config["intro_place"]}`;
 			const TITLE = String.raw`{config["title"]}`;
 
